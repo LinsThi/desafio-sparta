@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "desafio-sparta",
+    "slug": "desafio-sparta",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "desafio-sparta"
+}
