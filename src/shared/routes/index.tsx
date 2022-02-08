@@ -6,7 +6,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Home } from '~/modules/FlatCity/views/Home';
-import { NewCity } from '~/modules/FlatCity/views/NewCity';
+import { NewCity } from '~/modules/SearchCity/views/NewCity';
 
 import { Header } from '../components/Header';
 import { CITIES_SCREEN, HOME_SCREEN } from '../constants/routes';
@@ -41,6 +41,7 @@ export function RootStack() {
             component={NewCity}
             name={CITIES_SCREEN}
             options={{
+              header: props => <Header {...props} enableNavigation />,
               tabBarIcon: ({ size, color }) => (
                 <AntDesign name="pluscircle" size={size} color={color} />
               ),
