@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Flatlist } from './modules/FlatCity/views/Flatlist';
+import { RootStack } from './shared/routes';
 
 export default function App() {
-  return <Flatlist />;
+  return <RootStack />;
 }
