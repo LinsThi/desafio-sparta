@@ -5,6 +5,8 @@ import { Flatlist } from '../../components/Flatlist';
 
 import * as S from './styles';
 
+const citiesSelected = [];
+
 export function Home() {
   const navigation = useNavigation();
 
@@ -16,7 +18,19 @@ export function Home() {
 
   return (
     <S.Container>
-      <Flatlist />
+      {citiesSelected.length > 0 ? (
+        <Flatlist />
+      ) : (
+        <S.ContainerInfo>
+          <S.TextTitle>
+            Poxa, que pena. Parece que você ainda não selecionou nenhuma cidade
+          </S.TextTitle>
+
+          <S.SubText>
+            Tente inserir uma cidade clicando no ícone de adicionar
+          </S.SubText>
+        </S.ContainerInfo>
+      )}
     </S.Container>
   );
 }
