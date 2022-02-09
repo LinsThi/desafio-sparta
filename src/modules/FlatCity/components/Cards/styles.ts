@@ -1,6 +1,9 @@
+import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled(Animatable.View).attrs({
+  animation: 'fadeInLeftBig',
+})`
   width: 100%;
   justify-content: space-between;
   align-items: center;

@@ -1,8 +1,11 @@
+import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 
 import { NewText } from '~/shared/components/Text';
 
-export const Container = styled.View`
+export const Container = styled(Animatable.View).attrs({
+  animation: 'fadeInUpBig',
+})`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
