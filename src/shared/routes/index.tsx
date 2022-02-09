@@ -5,15 +5,15 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Home } from '~/modules/FlatCity/views/Home';
 import { NewCity } from '~/modules/SearchCity/views/NewCity';
 
 import { Header } from '../components/Header';
-import { CITIES_SCREEN, HOME_SCREEN } from '../constants/routes';
+import { CITIES_SCREEN, HOME_TAB_SCREEN } from '../constants/routes';
+import { HomeStack } from './stackNavigator';
 
 const Tab = createBottomTabNavigator();
 
-export function RootStack() {
+export function TabNavigator() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar backgroundColor="#5091ab" />
@@ -26,10 +26,10 @@ export function RootStack() {
           }}
         >
           <Tab.Screen
-            component={Home}
-            name={HOME_SCREEN}
+            component={HomeStack}
+            name={HOME_TAB_SCREEN}
             options={{
-              header: props => <Header {...props} />,
+              headerShown: false,
               tabBarIcon: ({ size, color }) => (
                 <Entypo name="home" size={size} color={color} />
               ),
@@ -37,6 +37,7 @@ export function RootStack() {
               tabBarInactiveTintColor: '#ffffff',
             }}
           />
+
           <Tab.Screen
             component={NewCity}
             name={CITIES_SCREEN}
