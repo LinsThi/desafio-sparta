@@ -1,15 +1,18 @@
 import React from 'react';
 
+import { useCities } from '~/shared/hooks/useCities';
+
 import { CardCity } from '../CardCity';
-import { arrayCities } from './mock';
 
 import * as S from './styles';
 
 export function FlatListCards() {
+  const { citiesSearched } = useCities();
+
   return (
     <S.FlatList
-      data={arrayCities}
-      extraData={arrayCities}
+      data={citiesSearched}
+      extraData={citiesSearched}
       keyExtractor={(_, index) => index.toString()}
       renderItem={CardCity}
       showsVerticalScrollIndicator={false}
