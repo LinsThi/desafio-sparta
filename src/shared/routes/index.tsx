@@ -23,6 +23,8 @@ export function TabNavigator() {
             tabBarStyle: {
               backgroundColor: '#5091ab',
             },
+            tabBarActiveTintColor: '#87ceeb',
+            tabBarInactiveTintColor: '#ffffff',
           }}
         >
           <Tab.Screen
@@ -33,8 +35,6 @@ export function TabNavigator() {
               tabBarIcon: ({ size, color }) => (
                 <Entypo name="home" size={size} color={color} />
               ),
-              tabBarActiveTintColor: '#87ceeb',
-              tabBarInactiveTintColor: '#ffffff',
             }}
           />
 
@@ -46,8 +46,6 @@ export function TabNavigator() {
               tabBarIcon: ({ size, color }) => (
                 <AntDesign name="pluscircle" size={size} color={color} />
               ),
-              tabBarActiveTintColor: '#87ceeb',
-              tabBarInactiveTintColor: '#ffffff',
             }}
           />
         </Tab.Navigator>

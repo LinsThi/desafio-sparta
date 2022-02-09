@@ -11,7 +11,7 @@ interface IconProps {
 export const Container = styled.View`
   width: 100%;
   background: #5091ab;
-  padding: 5px 0px;
+  padding: 15px 0px;
   flex-direction: row;
   justify-content: center;
   align-items: center;

@@ -18,7 +18,7 @@ export function Home() {
 
   return (
     <S.Container>
-      {citiesSelected.length >= 0 ? (
+      {citiesSelected.length > 0 ? (
         <Flatlist />
       ) : (
         <S.ContainerInfo>
