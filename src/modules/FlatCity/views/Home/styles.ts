@@ -4,6 +4,7 @@ import { NewText } from '~/shared/components/Text';
 
 export const Container = styled.View`
   flex: 1;
+  background: #87ceeb;
 `;
 
 export const ContainerInfo = styled.View``;

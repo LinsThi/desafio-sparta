@@ -3,7 +3,6 @@ import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef, useState } from 'react';
 
 import favorite from '~/shared/assets/favorite.json';
-import { NewText } from '~/shared/components/Text';
 import { CITY_WEATHER } from '~/shared/constants/routes';
 
 import * as S from './styles';
@@ -25,16 +24,19 @@ export function Cards() {
     <S.Button onPress={() => navigation.navigate(CITY_WEATHER)}>
       <S.Container>
         <S.ContainerCity>
-          <NewText fontSize={24}>Fortaleza</NewText>
-          <NewText fontSize={22}>Brasil</NewText>
-          <NewText fontColor="#EEA22D">Chuva</NewText>
-          <NewText fontColor="#ff8c00">14°-22°</NewText>
+          <S.City fontSize={24}>Fortaleza</S.City>
+          <S.Country fontSize={22}>Brasil</S.Country>
+          <S.Weather fontColor="#EEA22D">Chuva</S.Weather>
+          <S.TemperaturePredicted fontColor="#ff8c00">
+            14°-22°
+          </S.TemperaturePredicted>
         </S.ContainerCity>
 
         <S.ContainerInfo>
-          <NewText fontSize={30} fontColor="#EEA22D">
+          <S.Temperature fontSize={30} fontColor="#EEA22D">
             12°
-          </NewText>
+          </S.Temperature>
+
           <S.Button onPress={() => setFavoriteCity(!favoriteCity)}>
             <LottieView
               source={favorite}

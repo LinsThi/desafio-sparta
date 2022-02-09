@@ -24,6 +24,10 @@ export const Button = styled.TouchableOpacity`
   margin-left: 10px;
 `;
 
+export const TextCity = styled(NewText).attrs({ fontSize: 26 })``;
+
+export const TextCountry = styled(NewText).attrs({ fontSize: 22 })``;
+
 export const TextButton = styled(NewText).attrs({ fontColor: '#4169e1' })`
   font-weight: bold;
 `;

@@ -1,6 +1,8 @@
 import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 
+import { NewText } from '~/shared/components/Text';
+
 export const Container = styled(Animatable.View).attrs({
   animation: 'fadeInLeftBig',
 })`
@@ -24,3 +26,24 @@ export const ContainerInfo = styled.View`
 `;
 
 export const Button = styled.TouchableOpacity``;
+
+export const City = styled(NewText).attrs({ fontSize: 24 })`
+  font-weight: bold;
+`;
+
+export const Country = styled(NewText).attrs({ fontSize: 22 })`
+  padding-bottom: 5px;
+`;
+
+export const Weather = styled(NewText).attrs({
+  fontColor: '#EEA22D',
+})``;
+
+export const TemperaturePredicted = styled(NewText).attrs({
+  fontColor: '#ff8c00',
+})``;
+
+export const Temperature = styled(NewText).attrs({
+  fontSize: 30,
+  fontColor: '#EEA22D',
+})``;
