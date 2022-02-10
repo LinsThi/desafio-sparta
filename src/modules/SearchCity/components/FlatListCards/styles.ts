@@ -10,7 +10,7 @@ export const ContainerItem = styled(Animatable.View).attrs({
   margin: 10px 0px;
   padding: 5px 20px;
   border-radius: 10px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
 `;
 
 export const ContainerCard = styled.View`
@@ -22,7 +22,9 @@ export const Button = styled.TouchableOpacity`
   margin-left: 10px;
 `;
 
-export const TextCity = styled(NewText).attrs({ fontSize: 26 })``;
+export const TextCity = styled(NewText).attrs({ fontSize: 26 })`
+  font-weight: bold;
+`;
 
 export const TextCountry = styled(NewText).attrs({ fontSize: 22 })``;
 

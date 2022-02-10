@@ -19,6 +19,7 @@ export const Container = styled.View`
 export const InputSearch = styled.TextInput`
   flex: 1;
   padding-left: 5px;
+  color: #fff;
 `;
 
 export const Button = styled(Icon).attrs<IconProps>(({ name, iconType }) => ({

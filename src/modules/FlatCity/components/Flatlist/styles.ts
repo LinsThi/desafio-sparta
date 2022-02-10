@@ -15,7 +15,7 @@ export const ContainerItem = styled(Animatable.View).attrs({
   justify-content: space-between;
   align-items: center;
 
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
   flex-direction: row;
 
   padding: 5px 15px;
@@ -39,7 +39,9 @@ export const Country = styled(NewText).attrs({ fontSize: 21 })`
 
 export const Weather = styled(NewText).attrs({
   fontColor: '#EEA22D',
-})``;
+})`
+  text-transform: capitalize;
+`;
 
 export const TemperaturePredicted = styled(NewText).attrs({
   fontColor: '#ff8c00',

@@ -14,11 +14,13 @@ export const TextTitle = styled(NewText).attrs({ fontSize: 25 })`
   padding-top: 50px;
   padding-left: 20px;
   padding-right: 20px;
+  font-weight: bold;
 `;
 
-export const SubText = styled(NewText).attrs({ fontColor: '#a5a5a5' })`
+export const SubText = styled(NewText).attrs({})`
   text-align: center;
   padding-top: 30px;
   padding-left: 10px;
   padding-right: 10px;
+  font-weight: bold;
 `;
