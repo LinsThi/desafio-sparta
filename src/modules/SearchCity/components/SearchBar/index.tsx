@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
 import { getCities } from '~/shared/services/getCities';
-import { citySearchInserAction } from '~/shared/store/ducks/citiesSearched/action';
+import { citySearchInsertAction } from '~/shared/store/ducks/citiesSearched/action';
 
 import { filterRepeatCities } from './utils';
 
@@ -19,7 +19,7 @@ export function SearchBar() {
 
     const uniqueCities = filterRepeatCities(arrayCities);
 
-    dispatch(citySearchInserAction(uniqueCities));
+    dispatch(citySearchInsertAction(uniqueCities));
   }, [searchCity, dispatch]);
 
   return (

@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
-import { useCities } from '~/shared/hooks/useCities';
 
 import { FlatListCards } from '../../components/FlatListCards';
 import { SearchBar } from '../../components/SearchBar';

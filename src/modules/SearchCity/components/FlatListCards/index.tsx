@@ -36,31 +36,34 @@ export function FlatListCards() {
     [citiesSelected, dispatch],
   );
 
-  const renderItem = useCallback((item: any) => {
-    const addressSplited = item.item.display_name.split(',');
-    const country = arrayUF.find(currentUF =>
-      item.item.display_name.includes(currentUF),
-    );
+  const renderItem = useCallback(
+    ({ item }: any) => {
+      const addressSplited = item.display_name.split(',');
+      const country = arrayUF.find(currentUF =>
+        item.display_name.includes(currentUF),
+      );
 
-    return (
-      <S.ContainerItem>
-        <S.ContainerCard>
-          <S.TextCity fontSize={26}>
-            {addressSplited[0]} - {country}
-          </S.TextCity>
-          <S.TextCountry fontSize={22}>Brasil</S.TextCountry>
+      return (
+        <S.ContainerItem>
+          <S.ContainerCard>
+            <S.TextCity fontSize={26}>
+              {addressSplited[0]} - {country}
+            </S.TextCity>
+            <S.TextCountry fontSize={22}>Brasil</S.TextCountry>
 
-          <S.Button
-            onPress={() =>
-              handleSelectCity(item.item, `${addressSplited[0]} - ${country}`)
-            }
-          >
-            <S.TextButton>ADICIONAR</S.TextButton>
-          </S.Button>
-        </S.ContainerCard>
-      </S.ContainerItem>
-    );
-  }, []);
+            <S.Button
+              onPress={() =>
+                handleSelectCity(item, `${addressSplited[0]} - ${country}`)
+              }
+            >
+              <S.TextButton>ADICIONAR</S.TextButton>
+            </S.Button>
+          </S.ContainerCard>
+        </S.ContainerItem>
+      );
+    },
+    [handleSelectCity],
+  );
 
   return (
     <S.FlatList
