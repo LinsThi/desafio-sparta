@@ -15,7 +15,7 @@ export const Container = styled(Animatable.View).attrs({
   border: 1px #fff;
   border-radius: 10px;
   margin-bottom: 20px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
 `;
 
 export const ContainerInfo = styled.View``;
@@ -32,6 +32,7 @@ export const ImageWeather = styled.Image`
 
 export const DayWeek = styled(NewText).attrs({ fontSize: 30 })`
   font-weight: bold;
+  text-transform: capitalize;
 `;
 
 export const Date = styled(NewText).attrs({ fontSize: 20 })`

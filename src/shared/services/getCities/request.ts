@@ -1,5 +1,5 @@
-import { COUNTRY, FORMAT_JSON } from '../constants/request';
-import api from './api';
+import { COUNTRY, FORMAT_JSON } from '../../constants/request';
+import { apiCity } from '../api';
 
 interface QueryProps {
   city: string;
@@ -11,6 +11,6 @@ export default {
 
     const url = `${path}?city=${query}`;
 
-    return api.get(url);
+    return apiCity.get(url);
   },
 };

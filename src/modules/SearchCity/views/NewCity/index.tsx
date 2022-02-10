@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import { useCities } from '~/shared/hooks/useCities';
+import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
 
 import { FlatListCards } from '../../components/FlatListCards';
 import { SearchBar } from '../../components/SearchBar';
@@ -10,7 +11,10 @@ import * as S from './styles';
 
 export function NewCity() {
   const navigation = useNavigation();
-  const { citiesSearched } = useCities();
+
+  const { citiesSearched } = useSelector(
+    (state: AplicationState) => state.citiesSearched,
+  );
 
   useEffect(() => {
     navigation.setOptions({

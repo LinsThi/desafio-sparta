@@ -1,6 +1,9 @@
 export interface SelectedCityDTO {
-  latitude: string;
-  longitude: string;
+  lat: number;
+  lon: number;
   display_name: string;
+  temperature: string;
+  temperatureMaxMin: string;
+  weather: string;
   isFavorite: boolean;
 }
