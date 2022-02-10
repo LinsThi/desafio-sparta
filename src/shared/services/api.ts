@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-import { BASE_URL } from '../constants/request';
+import { BASE_URL, BASE_URL_WEATHER } from '../constants/request';
 
-const api = axios.create({
+const apiCity = axios.create({
   baseURL: BASE_URL,
 });
 
-export default api;
+const apiWeather = axios.create({
+  baseURL: BASE_URL_WEATHER,
+});
+
+export { apiCity, apiWeather };

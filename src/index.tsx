@@ -1,13 +1,13 @@
 import React from 'react';
-
-import { CityProvider } from '~/shared/context/CityContext';
+import { Provider as StoreProvider } from 'react-redux';
 
 import { TabNavigator } from './shared/routes';
+import store from './shared/store';
 
 export default function App() {
   return (
-    <CityProvider>
+    <StoreProvider store={store}>
       <TabNavigator />
-    </CityProvider>
+    </StoreProvider>
   );
 }

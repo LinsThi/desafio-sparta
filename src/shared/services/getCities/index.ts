@@ -1,4 +1,4 @@
-import request from '../request';
+import request from './request';
 
 export async function getCities(city: string) {
   try {
