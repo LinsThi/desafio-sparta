@@ -20,7 +20,9 @@ export function Header({ options, enableNavigation }: HeaderProps) {
           </S.Button>
         </S.ContainerBack>
       )}
-      <S.TitlePage> {options.title} </S.TitlePage>
+      <S.ContainerTitle>
+        <S.TitlePage> {options.title} </S.TitlePage>
+      </S.ContainerTitle>
     </S.Container>
   );
 }
