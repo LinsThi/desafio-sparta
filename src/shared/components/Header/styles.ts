@@ -18,8 +18,13 @@ export const Container = styled.View`
 `;
 
 export const ContainerBack = styled.View`
-  position: absolute;
-  left: 20px;
+  /* position: absolute;
+  left: 20px; */
+  padding-left: 20px;
+`;
+
+export const ContainerTitle = styled.View`
+  flex: 1;
 `;
 
 export const Button = styled.TouchableOpacity``;

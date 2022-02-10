@@ -6,13 +6,12 @@ import { NewText } from '~/shared/components/Text';
 export const Container = styled.View``;
 
 export const FlatList = styled.FlatList`
-  padding: 20px 20px;
+  padding: 20px 15px;
 `;
 
 export const ContainerItem = styled(Animatable.View).attrs({
   animation: 'fadeInLeftBig',
 })`
-  width: 100%;
   justify-content: space-between;
   align-items: center;
 
@@ -28,17 +27,14 @@ export const ContainerCity = styled.View``;
 
 export const ContainerInfo = styled.View`
   align-items: center;
-  justify-content: center;
 `;
 
-export const Button = styled.TouchableOpacity``;
-
-export const City = styled(NewText).attrs({ fontSize: 24 })`
+export const City = styled(NewText).attrs({ fontSize: 22 })`
   font-weight: bold;
 `;
 
-export const Country = styled(NewText).attrs({ fontSize: 22 })`
-  padding-bottom: 5px;
+export const Country = styled(NewText).attrs({ fontSize: 21 })`
+  margin-bottom: 5px;
 `;
 
 export const Weather = styled(NewText).attrs({
@@ -53,3 +49,7 @@ export const Temperature = styled(NewText).attrs({
   fontSize: 30,
   fontColor: '#EEA22D',
 })``;
+
+export const ButtonContainer = styled.TouchableOpacity`
+  width: 90%;
+`;
