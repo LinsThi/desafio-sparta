@@ -3,6 +3,10 @@ import styled from 'styled-components/native';
 
 import { NewText } from '~/shared/components/Text';
 
+interface TextProps {
+  fontColor: string;
+}
+
 export const ContainerItem = styled(Animatable.View).attrs({
   animation: 'fadeInUpBig',
 })`
@@ -28,7 +32,9 @@ export const TextCity = styled(NewText).attrs({ fontSize: 26 })`
 
 export const TextCountry = styled(NewText).attrs({ fontSize: 22 })``;
 
-export const TextButton = styled(NewText).attrs({ fontColor: '#4169e1' })`
+export const TextButton = styled(NewText).attrs<TextProps>(({ fontColor }) => ({
+  fontColor,
+}))`
   font-weight: bold;
 `;
 
