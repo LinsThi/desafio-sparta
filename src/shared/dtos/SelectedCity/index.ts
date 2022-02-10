@@ -1,6 +1,6 @@
 export interface SelectedCityDTO {
-  latitude: string;
-  longitude: string;
+  lat: string;
+  lon: string;
   display_name: string;
   isFavorite: boolean;
 }

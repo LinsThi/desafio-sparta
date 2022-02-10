@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import { NewText } from '~/shared/components/Text';
 
-export const Container = styled(Animatable.View).attrs({
+export const ContainerItem = styled(Animatable.View).attrs({
   animation: 'fadeInLeftBig',
 })`
   width: 100%;

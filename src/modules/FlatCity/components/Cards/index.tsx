@@ -22,7 +22,7 @@ export function Cards() {
 
   return (
     <S.Button onPress={() => navigation.navigate(CITY_WEATHER)}>
-      <S.Container>
+      <S.ContainerItem>
         <S.ContainerCity>
           <S.City fontSize={24}>Fortaleza</S.City>
           <S.Country fontSize={22}>Brasil</S.Country>
@@ -47,7 +47,7 @@ export function Cards() {
             />
           </S.Button>
         </S.ContainerInfo>
-      </S.Container>
+      </S.ContainerItem>
     </S.Button>
   );
 }

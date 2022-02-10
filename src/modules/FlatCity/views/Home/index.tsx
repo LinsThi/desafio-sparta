@@ -1,13 +1,17 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
 
 import { Flatlist } from '../../components/Flatlist';
 
 import * as S from './styles';
 
-const citiesSelected = [];
-
 export function Home() {
+  const { citiesSelected } = useSelector(
+    (state: AplicationState) => state.citiesSelected,
+  );
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -19,7 +23,7 @@ export function Home() {
   return (
     <S.Container>
       {citiesSelected.length > 0 ? (
-        <Flatlist />
+        <Flatlist arrayCities={citiesSelected} />
       ) : (
         <S.ContainerInfo>
           <S.TextTitle>
