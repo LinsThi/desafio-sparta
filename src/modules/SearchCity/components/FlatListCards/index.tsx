@@ -1,13 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { useCities } from '~/shared/hooks/useCities';
+import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
 
 import { CardCity } from '../CardCity';
 
 import * as S from './styles';
 
 export function FlatListCards() {
-  const { citiesSearched } = useCities();
+  const { citiesSearched } = useSelector(
+    (state: AplicationState) => state.citiesSearched,
+  );
 
   return (
     <S.FlatList

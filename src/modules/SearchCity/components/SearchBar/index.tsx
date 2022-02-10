@@ -1,15 +1,16 @@
 import React, { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
-import { useCities } from '~/shared/hooks/useCities';
 import { getCities } from '~/shared/services/getCities';
+import { citySearchInserAction } from '~/shared/store/ducks/citiesSearched/action';
 
 import { filterRepeatCities } from './utils';
 
 import * as S from './styles';
 
 export function SearchBar() {
-  const { setSearchData } = useCities();
+  const dispatch = useDispatch();
   const [searchCity, setSearchCity] = useState('');
 
   const handleSearchCities = useCallback(async () => {
@@ -18,8 +19,8 @@ export function SearchBar() {
 
     const uniqueCities = filterRepeatCities(arrayCities);
 
-    setSearchData(uniqueCities);
-  }, [searchCity, setSearchData]);
+    dispatch(citySearchInserAction(uniqueCities));
+  }, [searchCity, dispatch]);
 
   return (
     <S.Container>
