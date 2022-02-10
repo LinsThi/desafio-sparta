@@ -2,7 +2,10 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
+import { WEATHER } from '~/shared/constants/request';
+import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
 import type { SelectedCityDTO } from '~/shared/dtos/SelectedCity';
+import { getTemperature } from '~/shared/services/getTemperature';
 import { citySelectInsertAction } from '~/shared/store/ducks/citiesSelected/action';
 
 import { arrayUF } from './utils/arrayUF';
@@ -21,11 +24,27 @@ export function FlatListCards() {
   );
 
   const handleSelectCity = useCallback(
-    (item: SelectedCityDTO, cityNameFormated: string) => {
+    async (item: SelectedCityDTO, cityNameFormated: string) => {
+      const response: ResponseGeneratorDTO = await getTemperature(
+        WEATHER,
+        item.lat,
+        item.lon,
+        'metric',
+        'pt',
+      );
+
+      const { data } = response;
+
       const cityChosen: SelectedCityDTO = {
         display_name: cityNameFormated,
         lat: item.lat,
         lon: item.lon,
+        temperature: `${parseInt(data.main.temp, 10)}°`,
+        temperatureMaxMin: `${parseInt(data.main.temp_min, 10)}°-${parseInt(
+          data.main.temp_max,
+          10,
+        )}°`,
+        weather: data.weather[0].description,
         isFavorite: false,
       };
 

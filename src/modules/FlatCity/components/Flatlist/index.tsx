@@ -18,12 +18,14 @@ export function Flatlist({ arrayCities }: FlatListProps) {
           <S.ContainerCity>
             <S.City>{item.display_name}</S.City>
             <S.Country>Brasil</S.Country>
-            <S.Weather>Chuva</S.Weather>
-            <S.TemperaturePredicted>14°-22°</S.TemperaturePredicted>
+            <S.Weather>{item.weather}</S.Weather>
+            <S.TemperaturePredicted>
+              {item.temperatureMaxMin}
+            </S.TemperaturePredicted>
           </S.ContainerCity>
 
           <S.ContainerInfo>
-            <S.Temperature>12°</S.Temperature>
+            <S.Temperature>{item.temperature}</S.Temperature>
 
             <S.Button>
               <IconLottie
