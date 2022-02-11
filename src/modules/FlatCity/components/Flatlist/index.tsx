@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useEffect } from 'react';
+import { Root, Popup } from 'react-native-popup-confirm-toast';
 import { useDispatch } from 'react-redux';
 
 import { UNITS_CELCIUS, WEATHER } from '~/shared/constants/request';
@@ -101,7 +102,19 @@ export function Flatlist({ arrayCities, units }: FlatListProps) {
               cityIdentificator={item.display_name}
             />
 
-            <S.Button onPress={() => handleRemoveCitySelected(item)}>
+            {/* <S.Button onPress={() => handleRemoveCitySelected(item)}> */}
+            <S.Button
+              onPress={() =>
+                Popup.show({
+                  type: 'confirm',
+                  title: 'Deseja apagar cidade?',
+                  textBody: `Você realmente confirma, que deseja retirar ${item.display_name} da lista?`,
+                  buttonText: 'Confirmar',
+                  confirmText: 'Não confirmar',
+                  callback: () => handleRemoveCitySelected(item),
+                })
+              }
+            >
               <S.IconDelete name="trash-o" iconType="font" />
             </S.Button>
           </S.ContainerInfo>
@@ -112,14 +125,16 @@ export function Flatlist({ arrayCities, units }: FlatListProps) {
   );
 
   return (
-    <S.Container>
-      <S.FlatList
-        data={arrayCities}
-        extraData={arrayCities}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-      />
-    </S.Container>
+    <Root>
+      <S.Container>
+        <S.FlatList
+          data={arrayCities}
+          extraData={arrayCities}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
+      </S.Container>
+    </Root>
   );
 }
