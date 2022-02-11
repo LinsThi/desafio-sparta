@@ -71,7 +71,7 @@ export function Flatlist({ arrayCities, units }: FlatListProps) {
   const renderItem = useCallback(
     ({ item }: any) => {
       return (
-        <S.ContainerItem>
+        <S.ContainerItem favorite={item.isFavorite}>
           <S.ContainerCity>
             <S.ButtonContainer
               onPress={() =>

@@ -4,6 +4,10 @@ import styled from 'styled-components/native';
 import Icon from '~/shared/components/Icon';
 import { NewText } from '~/shared/components/Text';
 
+interface FavoriteCard {
+  favorite: boolean;
+}
+
 interface IconProps {
   name: string;
   iconType: string;
@@ -17,11 +21,12 @@ export const FlatList = styled.FlatList`
 
 export const ContainerItem = styled(Animatable.View).attrs({
   animation: 'fadeInLeftBig',
-})`
+})<FavoriteCard>`
   justify-content: space-between;
   align-items: center;
 
-  background: rgba(255, 255, 255, 0.6);
+  background: ${({ favorite }) =>
+    favorite ? `rgba(255, 255, 255, 1)` : `rgba(255, 255, 255, 0.3)`};
   flex-direction: row;
 
   padding: 5px 20px;
