@@ -18,8 +18,6 @@ export const Container = styled.View`
 `;
 
 export const ContainerBack = styled.View`
-  /* position: absolute;
-  left: 20px; */
   padding-left: 20px;
 `;
 
@@ -34,6 +32,7 @@ export const TitlePage = styled(NewText).attrs(() => ({
   fontColor: '#fff',
 }))`
   text-align: center;
+  font-weight: bold;
 `;
 
 export const IconButton = styled(Icon).attrs<IconProps>(

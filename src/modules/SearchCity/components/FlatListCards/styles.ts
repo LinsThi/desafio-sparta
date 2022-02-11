@@ -3,6 +3,10 @@ import styled from 'styled-components/native';
 
 import { NewText } from '~/shared/components/Text';
 
+interface TextProps {
+  fontColor: string;
+}
+
 export const ContainerItem = styled(Animatable.View).attrs({
   animation: 'fadeInUpBig',
 })`
@@ -10,7 +14,7 @@ export const ContainerItem = styled(Animatable.View).attrs({
   margin: 10px 0px;
   padding: 5px 20px;
   border-radius: 10px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
 `;
 
 export const ContainerCard = styled.View`
@@ -22,11 +26,15 @@ export const Button = styled.TouchableOpacity`
   margin-left: 10px;
 `;
 
-export const TextCity = styled(NewText).attrs({ fontSize: 26 })``;
+export const TextCity = styled(NewText).attrs({ fontSize: 26 })`
+  font-weight: bold;
+`;
 
 export const TextCountry = styled(NewText).attrs({ fontSize: 22 })``;
 
-export const TextButton = styled(NewText).attrs({ fontColor: '#4169e1' })`
+export const TextButton = styled(NewText).attrs<TextProps>(({ fontColor }) => ({
+  fontColor,
+}))`
   font-weight: bold;
 `;
 

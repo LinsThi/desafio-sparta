@@ -23,8 +23,8 @@ export function TabNavigator() {
             tabBarStyle: {
               backgroundColor: '#5091ab',
             },
-            tabBarActiveTintColor: '#87ceeb',
-            tabBarInactiveTintColor: '#ffffff',
+            tabBarActiveTintColor: '#ffffff',
+            tabBarInactiveTintColor: '#87ceeb',
           }}
         >
           <Tab.Screen

@@ -1,11 +1,11 @@
+import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
+
 import request from './request';
 
-export async function getCities(city: string) {
-  try {
-    const response = await request.get('/search', { city });
+export async function getCities(city: string): Promise<ResponseGeneratorDTO> {
+  const response = await request.get('/search', {
+    city,
+  });
 
-    return response;
-  } catch {
-    return null;
-  }
+  return response;
 }

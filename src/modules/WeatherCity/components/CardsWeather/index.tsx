@@ -1,6 +1,8 @@
 import { format, isToday, isTomorrow } from 'date-fns';
-import * as language from 'date-fns/locale/pt-BR';
+import ptBR from 'date-fns/locale/pt-BR';
 import React, { useEffect, useState } from 'react';
+
+import { URL_GET_ICON, GET_ICON_CONFIG } from '~/shared/constants/request';
 
 import * as S from './styles';
 
@@ -28,7 +30,7 @@ export function CardsWeather({
     } else if (isTomorrow(new Date(day * 1000))) {
       setDayWeek('Amanhã');
     } else {
-      setDayWeek(format(new Date(day * 1000), 'EEEE', { locale: language }));
+      setDayWeek(format(new Date(day * 1000), 'EEEE', { locale: ptBR }));
     }
   }, [day]);
 
@@ -42,7 +44,7 @@ export function CardsWeather({
           <S.Weather>{weather}</S.Weather>
           <S.ImageWeather
             source={{
-              uri: `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`,
+              uri: `${URL_GET_ICON}/${weatherIcon}${GET_ICON_CONFIG}`,
             }}
           />
         </S.ContainerWeather>

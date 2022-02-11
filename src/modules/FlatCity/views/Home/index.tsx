@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux';
 
 import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
 
+import { ButtonFloat } from '../../components/ButtonFloat';
 import { Flatlist } from '../../components/Flatlist';
 
 import * as S from './styles';
 
 export function Home() {
-  const { citiesSelected } = useSelector(
+  const { citiesSelected, units } = useSelector(
     (state: AplicationState) => state.citiesSelected,
   );
   const navigation = useNavigation();
@@ -23,7 +24,7 @@ export function Home() {
   return (
     <S.Container>
       {citiesSelected.length > 0 ? (
-        <Flatlist arrayCities={citiesSelected} />
+        <Flatlist arrayCities={citiesSelected} units={units} />
       ) : (
         <S.ContainerInfo>
           <S.TextTitle>
@@ -35,6 +36,10 @@ export function Home() {
           </S.SubText>
         </S.ContainerInfo>
       )}
+
+      <S.ContainerButton>
+        <ButtonFloat />
+      </S.ContainerButton>
     </S.Container>
   );
 }
