@@ -68,7 +68,7 @@ export function Flatlist({ arrayCities }: FlatListProps) {
         </S.ContainerItem>
       );
     },
-    [navigation],
+    [navigation, handleRemoveCitySelected],
   );
 
   return (

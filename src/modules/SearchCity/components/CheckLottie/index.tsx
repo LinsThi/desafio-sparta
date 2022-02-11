@@ -57,6 +57,10 @@ export function CheckLottie({ addedIcon, item, cityName }: CheckLottieProps) {
   }, [cityName, item.lat, item.lon, citiesSelected, dispatch, addedCity]);
 
   useEffect(() => {
+    setAddedCity(addedIcon);
+  }, [addedIcon]);
+
+  useEffect(() => {
     if (addedCity) {
       animation.current.play(41, 130);
     } else {
