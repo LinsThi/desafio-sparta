@@ -34,7 +34,9 @@ export const ContainerItem = styled(Animatable.View).attrs({
   border-radius: 10px;
 `;
 
-export const ContainerCity = styled.View``;
+export const ContainerCity = styled.View`
+  max-width: 300px;
+`;
 
 export const ContainerInfo = styled.View`
   align-items: center;

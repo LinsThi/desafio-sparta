@@ -102,7 +102,6 @@ export function Flatlist({ arrayCities, units }: FlatListProps) {
               cityIdentificator={item.display_name}
             />
 
-            {/* <S.Button onPress={() => handleRemoveCitySelected(item)}> */}
             <S.Button
               onPress={() =>
                 Popup.show({
@@ -111,7 +110,10 @@ export function Flatlist({ arrayCities, units }: FlatListProps) {
                   textBody: `Você realmente confirma, que deseja retirar ${item.display_name} da lista?`,
                   buttonText: 'Confirmar',
                   confirmText: 'Não confirmar',
-                  callback: () => handleRemoveCitySelected(item),
+                  callback: () => {
+                    handleRemoveCitySelected(item);
+                    Popup.hide();
+                  },
                 })
               }
             >
