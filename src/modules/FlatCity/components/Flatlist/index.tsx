@@ -1,10 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { CITY_WEATHER } from '~/shared/constants/routes';
 import type { SelectedCityDTO } from '~/shared/dtos/SelectedCity';
+import { citySelectInsertAction } from '~/shared/store/ducks/citiesSelected/action';
 
 import { IconLottie } from '../IconLottie';
+import { removeCitySelected } from './utils';
 
 import * as S from './styles';
 
@@ -14,6 +17,16 @@ interface FlatListProps {
 
 export function Flatlist({ arrayCities }: FlatListProps) {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const handleRemoveCitySelected = useCallback(
+    (item: SelectedCityDTO) => {
+      const newArrayCities = removeCitySelected(arrayCities, item);
+
+      dispatch(citySelectInsertAction(newArrayCities));
+    },
+    [arrayCities, dispatch],
+  );
 
   const renderItem = useCallback(
     ({ item }: any) => {
@@ -47,6 +60,10 @@ export function Flatlist({ arrayCities }: FlatListProps) {
               favoriteIcon={item.isFavorite}
               cityIdentificator={item.display_name}
             />
+
+            <S.Button onPress={() => handleRemoveCitySelected(item)}>
+              <S.IconDelete name="trash-o" iconType="font" />
+            </S.Button>
           </S.ContainerInfo>
         </S.ContainerItem>
       );
@@ -61,6 +78,7 @@ export function Flatlist({ arrayCities }: FlatListProps) {
         extraData={arrayCities}
         keyExtractor={(_, index) => index.toString()}
         renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
       />
     </S.Container>
   );

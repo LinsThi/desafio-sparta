@@ -1,12 +1,18 @@
 import * as Animatable from 'react-native-animatable';
 import styled from 'styled-components/native';
 
+import Icon from '~/shared/components/Icon';
 import { NewText } from '~/shared/components/Text';
+
+interface IconProps {
+  name: string;
+  iconType: string;
+}
 
 export const Container = styled.View``;
 
 export const FlatList = styled.FlatList`
-  padding: 20px 15px;
+  padding: 10px 15px;
 `;
 
 export const ContainerItem = styled(Animatable.View).attrs({
@@ -18,7 +24,7 @@ export const ContainerItem = styled(Animatable.View).attrs({
   background: rgba(255, 255, 255, 0.6);
   flex-direction: row;
 
-  padding: 5px 15px;
+  padding: 5px 20px;
   margin-bottom: 15px;
   border-radius: 10px;
 `;
@@ -55,3 +61,14 @@ export const Temperature = styled(NewText).attrs({
 export const ButtonContainer = styled.TouchableOpacity`
   width: 90%;
 `;
+
+export const Button = styled.TouchableOpacity``;
+
+export const IconDelete = styled(Icon).attrs<IconProps>(
+  ({ name, iconType }) => ({
+    name,
+    type: iconType,
+    color: '#cf0e0e',
+    size: 30,
+  }),
+)<IconProps>``;
