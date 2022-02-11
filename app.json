@@ -1,11 +1,26 @@
 {
   "expo": {
-    "name": "desafio-sparta",
+    "name": "DesafioSparta",
     "slug": "desafio-sparta",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5091ab"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "linsthi.desafio.sparta"
+    }
   },
-  "name": "desafio-sparta"
+  "name": "desafio-sparta",
+  "android": {
+    "package": "com.linsthi.desafio-sparta",
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#5091ab"
+    }
+  }
 }
