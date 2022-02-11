@@ -1,9 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { WEATHER } from '~/shared/constants/request';
 import { CITY_WEATHER } from '~/shared/constants/routes';
+import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
 import type { SelectedCityDTO } from '~/shared/dtos/SelectedCity';
+import { getTemperature } from '~/shared/services/getTemperature';
 import { citySelectInsertAction } from '~/shared/store/ducks/citiesSelected/action';
 
 import { IconLottie } from '../IconLottie';
@@ -27,6 +30,38 @@ export function Flatlist({ arrayCities }: FlatListProps) {
     },
     [arrayCities, dispatch],
   );
+
+  useEffect(() => {
+    async function updateTemperatureCity() {
+      const arrayCitiesUpdated = await Promise.all(
+        arrayCities.map(async currentyCity => {
+          const cityUpdated = currentyCity;
+          const response: ResponseGeneratorDTO = await getTemperature(
+            WEATHER,
+            currentyCity.lat,
+            currentyCity.lon,
+            'metric',
+            'pt',
+          );
+
+          const { data } = response;
+
+          cityUpdated.temperature = `${Math.floor(data.main.temp)}`;
+          cityUpdated.temperatureMaxMin = `${Math.floor(
+            data.main.temp_min,
+          )}° / ${Math.floor(data.main.temp_max)}°`;
+
+          return cityUpdated;
+        }),
+      );
+
+      dispatch(citySelectInsertAction(arrayCitiesUpdated));
+    }
+
+    if (arrayCities.length > 0) {
+      updateTemperatureCity();
+    }
+  }, [dispatch]);
 
   const renderItem = useCallback(
     ({ item }: any) => {

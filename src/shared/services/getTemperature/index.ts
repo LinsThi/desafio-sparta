@@ -8,7 +8,12 @@ export async function getTemperature(
   lang: string,
 ) {
   try {
-    const response = await request.get(path, { lat, lon, units, lang });
+    const response = await request.get(path, {
+      lat,
+      lon,
+      units,
+      lang,
+    });
 
     return response;
   } catch {

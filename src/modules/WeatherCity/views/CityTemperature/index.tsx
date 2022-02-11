@@ -35,8 +35,9 @@ export function CityTemperature() {
         'metric',
         'pt',
       );
+
       const dataCity = response?.data;
-      setInfoWeather(dataCity.daily);
+      setInfoWeather(dataCity.daily.splice(0, 5));
       setLoading(false);
     }
 
