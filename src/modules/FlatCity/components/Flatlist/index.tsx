@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { WEATHER } from '~/shared/constants/request';
+import { UNITS_CELCIUS, WEATHER } from '~/shared/constants/request';
 import { CITY_WEATHER } from '~/shared/constants/routes';
 import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
 import type { SelectedCityDTO } from '~/shared/dtos/SelectedCity';
@@ -16,9 +16,10 @@ import * as S from './styles';
 
 interface FlatListProps {
   arrayCities: SelectedCityDTO[];
+  units: string;
 }
 
-export function Flatlist({ arrayCities }: FlatListProps) {
+export function Flatlist({ arrayCities, units }: FlatListProps) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -40,16 +41,20 @@ export function Flatlist({ arrayCities }: FlatListProps) {
             WEATHER,
             currentyCity.lat,
             currentyCity.lon,
-            'metric',
+            units,
             'pt',
           );
 
           const { data } = response;
 
-          cityUpdated.temperature = `${Math.floor(data.main.temp)}`;
-          cityUpdated.temperatureMaxMin = `${Math.floor(
-            data.main.temp_min,
-          )}° / ${Math.floor(data.main.temp_max)}°`;
+          cityUpdated.temperature = `${Math.floor(data.main.temp)}°${
+            units === UNITS_CELCIUS ? 'C' : 'F'
+          }`;
+          cityUpdated.temperatureMaxMin = `${Math.floor(data.main.temp_min)}°${
+            units === UNITS_CELCIUS ? 'C' : 'F'
+          } / ${Math.floor(data.main.temp_max)}°${
+            units === UNITS_CELCIUS ? 'C' : 'F'
+          }`;
 
           return cityUpdated;
         }),
@@ -61,7 +66,7 @@ export function Flatlist({ arrayCities }: FlatListProps) {
     if (arrayCities.length > 0) {
       updateTemperatureCity();
     }
-  }, [dispatch]);
+  }, [dispatch, units]);
 
   const renderItem = useCallback(
     ({ item }: any) => {

@@ -15,6 +15,8 @@ export default {
 
     const url = `/${path}?&${paramsUrl}&appid=${API_KEY_WEATHER}`;
 
+    console.log(url);
+
     return apiWeather.get(url);
   },
 };

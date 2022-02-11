@@ -9,6 +9,7 @@ import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
 import type { SelectedCityDTO } from '~/shared/dtos/SelectedCity';
 import { getTemperature } from '~/shared/services/getTemperature';
 import { citySelectInsertAction } from '~/shared/store/ducks/citiesSelected/action';
+import { verifyUnits } from '~/shared/utils';
 
 import * as S from './styles';
 
@@ -20,18 +21,24 @@ interface CheckLottieProps {
 
 export function CheckLottie({ addedIcon, item, cityName }: CheckLottieProps) {
   const dispatch = useDispatch();
-  const { citiesSelected } = useSelector(
+  const { citiesSelected, units } = useSelector(
     (state: AplicationState) => state.citiesSelected,
   );
   const animation = useRef({} as any);
   const [addedCity, setAddedCity] = useState(addedIcon);
+  const [unityChosen, setUnityChosen] = useState('');
+
+  useEffect(() => {
+    const unity = verifyUnits(units);
+    setUnityChosen(unity);
+  }, [units]);
 
   const handleSelectCity = useCallback(async () => {
     const response: ResponseGeneratorDTO = await getTemperature(
       WEATHER,
       item.lat,
       item.lon,
-      'metric',
+      units,
       'pt',
     );
 
@@ -42,11 +49,10 @@ export function CheckLottie({ addedIcon, item, cityName }: CheckLottieProps) {
       display_name: cityName,
       lat: item.lat,
       lon: item.lon,
-      temperature: `${parseInt(data.main.temp, 10)}°`,
-      temperatureMaxMin: `${parseInt(data.main.temp_min, 10)}° / ${parseInt(
-        data.main.temp_max,
-        10,
-      )}°`,
+      temperature: `${Math.floor(data.main.temp)}°${unityChosen}`,
+      temperatureMaxMin: `${Math.floor(
+        data.main.temp_min,
+      )}°${unityChosen} / ${Math.floor(data.main.temp_max)}°${unityChosen}`,
       weather: data.weather[0].description,
       isFavorite: false,
     };
@@ -54,7 +60,16 @@ export function CheckLottie({ addedIcon, item, cityName }: CheckLottieProps) {
     const arrayCities = [...citiesSelected, cityChosen];
 
     dispatch(citySelectInsertAction(arrayCities));
-  }, [cityName, item.lat, item.lon, citiesSelected, dispatch, addedCity]);
+  }, [
+    unityChosen,
+    units,
+    cityName,
+    item.lat,
+    item.lon,
+    citiesSelected,
+    dispatch,
+    addedCity,
+  ]);
 
   useEffect(() => {
     setAddedCity(addedIcon);

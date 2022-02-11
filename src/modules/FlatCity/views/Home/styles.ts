@@ -9,6 +9,19 @@ export const Container = styled.View`
 
 export const ContainerInfo = styled.View``;
 
+export const ContainerButton = styled.View`
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+
+  background: #5091ab;
+  border-radius: 60px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+`;
+
 export const TextTitle = styled(NewText).attrs({ fontSize: 25 })`
   text-align: center;
   padding-top: 50px;

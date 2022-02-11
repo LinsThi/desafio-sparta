@@ -1,9 +1,12 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
+import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
 import { ONE_CALL } from '~/shared/constants/request';
 import type { WeatherForecast } from '~/shared/dtos/WeatherForecast';
 import { getTemperature } from '~/shared/services/getTemperature';
+import { verifyUnits } from '~/shared/utils';
 
 import { CardsWeather } from '../../components/CardsWeather';
 
@@ -13,8 +16,13 @@ export function CityTemperature() {
   const navigation = useNavigation();
   const route = useRoute();
 
+  const { units } = useSelector(
+    (state: AplicationState) => state.citiesSelected,
+  );
+
   const [infoWeather, setInfoWeather] = useState<WeatherForecast[]>([]);
   const [loading, setLoading] = useState(true);
+  const [unityChosen, setUnityChosen] = useState('');
 
   const { citySelected } = route.params;
 
@@ -32,7 +40,7 @@ export function CityTemperature() {
         ONE_CALL,
         citySelected.lat,
         citySelected.lon,
-        'metric',
+        units,
         'pt',
       );
 
@@ -42,7 +50,12 @@ export function CityTemperature() {
     }
 
     requestTemperature();
-  }, [citySelected.lat, citySelected.lon]);
+  }, [units, citySelected.lat, citySelected.lon]);
+
+  useEffect(() => {
+    const unity = verifyUnits(units);
+    setUnityChosen(unity);
+  }, [units]);
 
   return (
     <S.Container>
@@ -59,8 +72,10 @@ export function CityTemperature() {
               weatherIcon={current.weather[0].icon}
               temperaturePredicted={`${Math.floor(
                 current.temp.min,
-              )}° / ${Math.floor(current.temp.max)}°`}
-              temperature={`${Math.floor(current.temp.day)}°`}
+              )}°${unityChosen} / ${Math.floor(
+                current.temp.max,
+              )}°${unityChosen}`}
+              temperature={`${Math.floor(current.temp.day)}°${unityChosen}`}
             />
           ))
         )}
