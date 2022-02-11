@@ -1,5 +1,5 @@
 import { format, isToday, isTomorrow } from 'date-fns';
-import * as language from 'date-fns/locale/pt-BR';
+import ptBR from 'date-fns/locale/pt-BR';
 import React, { useEffect, useState } from 'react';
 
 import { URL_GET_ICON, GET_ICON_CONFIG } from '~/shared/constants/request';
@@ -30,7 +30,7 @@ export function CardsWeather({
     } else if (isTomorrow(new Date(day * 1000))) {
       setDayWeek('Amanhã');
     } else {
-      setDayWeek(format(new Date(day * 1000), 'EEEE', { locale: language }));
+      setDayWeek(format(new Date(day * 1000), 'EEEE', { locale: ptBR }));
     }
   }, [day]);
 

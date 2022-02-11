@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
 import checkIcon from '~/shared/assets/check.json';
 import { WEATHER } from '~/shared/constants/request';
-import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
 import type { SelectedCityDTO } from '~/shared/dtos/SelectedCity';
 import { getTemperature } from '~/shared/services/getTemperature';
 import { citySelectInsertAction } from '~/shared/store/ducks/citiesSelected/action';
@@ -34,7 +33,7 @@ export function CheckLottie({ addedIcon, item, cityName }: CheckLottieProps) {
   }, [units]);
 
   const handleSelectCity = useCallback(async () => {
-    const response: ResponseGeneratorDTO = await getTemperature(
+    const response = await getTemperature(
       WEATHER,
       item.lat,
       item.lon,

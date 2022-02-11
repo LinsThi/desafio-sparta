@@ -1,3 +1,5 @@
+import type ResponseGeneratorDTO from '~/shared/dtos/ResponseGenerato';
+
 import request from './request';
 
 export async function getTemperature(
@@ -6,17 +8,13 @@ export async function getTemperature(
   lon: number,
   units: string,
   lang: string,
-) {
-  try {
-    const response = await request.get(path, {
-      lat,
-      lon,
-      units,
-      lang,
-    });
+): Promise<ResponseGeneratorDTO> {
+  const response = await request.get(path, {
+    lat,
+    lon,
+    units,
+    lang,
+  });
 
-    return response;
-  } catch {
-    return null;
-  }
+  return response;
 }

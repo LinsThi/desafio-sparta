@@ -43,6 +43,10 @@ export function IconLottie({
     }
   }, [favoriteCity]);
 
+  useEffect(() => {
+    setFavoriteCity(favoriteIcon);
+  }, [favoriteIcon]);
+
   return (
     <S.Button onPress={handleChangeFavorite}>
       <LottieView

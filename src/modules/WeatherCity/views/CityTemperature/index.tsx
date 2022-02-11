@@ -1,9 +1,11 @@
+import type { RouteProp } from '@react-navigation/native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import type { AplicationState } from '~/shared/@types/Entity/AplicationState';
 import { ONE_CALL } from '~/shared/constants/request';
+import type { CitySelectedNavigationDTO } from '~/shared/dtos/CityNavigation';
 import type { WeatherForecast } from '~/shared/dtos/WeatherForecast';
 import { getTemperature } from '~/shared/services/getTemperature';
 import { verifyUnits } from '~/shared/utils';
@@ -12,9 +14,13 @@ import { CardsWeather } from '../../components/CardsWeather';
 
 import * as S from './styles';
 
+type ParamList = {
+  citySelected: CitySelectedNavigationDTO;
+};
+
 export function CityTemperature() {
   const navigation = useNavigation();
-  const route = useRoute();
+  const route = useRoute<RouteProp<ParamList, 'citySelected'>>();
 
   const { units } = useSelector(
     (state: AplicationState) => state.citiesSelected,
